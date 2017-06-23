@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var unAnswered =0;
 	var noOfQuestions = 8; 
 	var allocateTime = 60;
+	var intervalId;
 
 	//Create an answer object
 	var answerObj ={
@@ -34,96 +35,138 @@ $(document).ready(function() {
 	};
 
 
-	
+	//Timer 
 	function decrement() {
 
 	  allocateTime--;
+	  if(allocateTime >=0){
 
-	  $("#timeRemain").text(allocateTime);
+		  $("#timeRemain").text(allocateTime);
 
-	  if (allocateTime === 0) {
+			  if (allocateTime === 0) {
 
-	    clearInterval(intervalId);
+			    processResults();
 
-	    alert("Time Up!");
+			    //alert("Time Up!");
+			  }
 	  }
 	}
 
     function run() {
       intervalId = setInterval(decrement, 1000);
     }
-
+    //End timer
 
 	$("#questions").fadeOut("fast");
+	$("#displayScore").css('display','none');
 
+	//when Start button click
 	$("button").on("click",function(){
-		$(".startMessage").fadeOut("fast");
-		$("#questions").show();
+		
+			$(".startMessage").fadeOut("fast");
+			$("#displayScore").css('display','none');
+			
+			$("#questions").show();
 
-		run();
+			run();
 	});
+
+
 
 	//user answer click event 
 	$("input:radio").click(function(){
 
 		
-		var quizNo = $(this).attr("name").toString();
-		var userSelection = $("input[name="+$(this).attr("name")+"]:checked").val();
+			var quizNo = $(this).attr("name").toString();
+			var userSelection = $("input[name="+$(this).attr("name")+"]:checked").val();
 
-		//console.log("Quiz No ==> "+typeof(quizNo));
-	
-		//get correct answer
-		// var correctAnsw = answerObj[quizNo];
-		// console.log("Correct Answer  ==> "+correctAnsw);
+			//console.log("Quiz No ==> "+typeof(quizNo));
 		
-		//Update userSelected object with seleted answer
-		userSelected[quizNo]= userSelection;
+			//get correct answer
+			// var correctAnsw = answerObj[quizNo];
+			// console.log("Correct Answer  ==> "+correctAnsw);
+			
+			//Update userSelected object with seleted answer
+			userSelected[quizNo]= userSelection;
 
-		console.log("User selections ==> "+userSelected[quizNo]);
-		//console.log(userSelected.q1+"---"+userSelected.q2+"---"+userSelected.q3+"---"+userSelected.q4);
+			console.log("User selections ==> "+userSelected[quizNo]);
 		
 	}); //End -- //user click event 
 
-//When Done Button Click
-$(".btn-done").click(function(){
 
-	processResults();
-});
+	//When Done Button Click
+	$(".btn-done").click(function(){
+		
+		processResults();
+	});
 
-//Process user results
-function processResults(){
-	for(var i=1;noOfQuestions >=i; i++){
-		var quesNo ="q"+i;
-		//if the answer correct
-		if(answerObj[quesNo] === userSelected[quesNo]){
-			noOfCorrect++;
-			console.log("Correct Answers -->"+answerObj[quesNo]);
-			console.log("User Answers -->"+userSelected[quesNo]);
-		}
-		else if( userSelected[quesNo] === ""){
-			unAnswered++;
-		}
-		else{
-			noOfWrong++;
-		}
-	} // End for
+	//Process user results
+	function processResults(){
+		
+		for(var i=1;noOfQuestions >=i; i++){
+				var quesNo ="q"+i;
+				//if the answer correct
+				if(answerObj[quesNo] === userSelected[quesNo]){
+					noOfCorrect++;
+					console.log("Correct Answers -->"+answerObj[quesNo]);
+					console.log("User Answers -->"+userSelected[quesNo]);
+				}
+				else if( userSelected[quesNo] === ""){
+					unAnswered++;
+				}
+				else{
+					noOfWrong++;
+				}
+		} // End for
 
-	console.log("No Correct Answers-->"+noOfCorrect);
-	console.log("No Wrong Answers-->"+noOfWrong);
-	console.log("No Answers-->"+unAnswered);
+		console.log("No Correct Answers-->"+noOfCorrect);
+		console.log("No Wrong Answers-->"+noOfWrong);
+		console.log("No Answers-->"+unAnswered);
 
-	$("#questions").fadeOut("fast");
-	$(".startMessage").show();
-	var finalScore = $("<div>");
-	finalScore.append($('p').text("No of Correct Answers :"+noOfCorrect));
-	finalScore.append($('p').text("No of Wrong Answers :"+noOfWrong));
-	finalScore.append($('p').text("No of Unanswered Questions :"+unAnswered));
+		$("#questions").fadeOut("fast");
+		$("#displayScore").css('display','block');
+		$("#correctanswers").text(noOfCorrect);
+		$("#incorrectanswers").text(noOfWrong);
+		$("#unanswered").text(unAnswered);
 
-	$(".start").append(finalScore);
+		reset();
+		
+	} // End of //Process user results
 
-} // End of //Process user results
+	//Reset Function 
 
-/* Sticky header
+	function reset(){
+
+		//clearInterval(intervalId); 
+
+		noOfCorrect =0;
+		noOfWrong = 0;
+		unAnswered =0;
+		allocateTime = 60;
+
+		//Reset User answer array
+		userSelected ={
+				q1:"",
+				q2:"",
+				q3:"",
+				q4:"",
+				q5:"",
+				q6:"",
+				q7:"",
+				q8:""
+			};
+
+	}//-- End Reset
+
+
+	//when Start button click
+	$("#reload").on("click",function(){
+		
+		location.reload();
+
+	});
+
+	/* Sticky header
 	$(window).scroll(function(){
 	  var sticky = $('.header'),
 	      scroll = $(window).scrollTop();
@@ -131,6 +174,6 @@ function processResults(){
 	  if (scroll >= 100) sticky.addClass('fixed');
 	  else sticky.removeClass('fixed');
 	});
-// sticky header end*/
+	// sticky header end*/
 
 }); // end $(document).ready(function()

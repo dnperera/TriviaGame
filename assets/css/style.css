@@ -68,6 +68,19 @@ body{
 	border-radius: 10px;
 }
 
+#displayScore {
+	width: 98%;
+	padding: 50px;
+	background: #bbd69e;
+	margin: 6px;
+	text-align: center;
+	border-radius: 10px;
+}
+.displayScore p {
+	text-align: left;
+	font-size: 20px;
+}
+
 #timeRemain{
 	font-size: 25px;
 	color:red;
