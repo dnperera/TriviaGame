@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<!-- Added a link to Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	<!-- Added link to the jQuery Library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div class="row">
+			<div class="col-md-12 header">
+				<h1> Totally Trivial Trivia !</h1>
+			</div>
+
+		</div>
+
+		<div class="row startMessage">
+			<div class="col-md-12 start">
+				<button class="btn btn-success btn-lg">Start >></button>
+			</div>
+
+		</div>
+
+		<div id="questions">
+			<div class="row">
+				<div class="col-md-12">
+					<h2> Time Remaining  : <SPAN id="timeRemain">00</SPAN> seconds</h2>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> What is typically considered the largest island in the world ? 
+					</p>
+					<p>
+						<input type="radio" name="q1"  value="Iceland"  /> Iceland </input>&nbsp&nbsp
+						<input type="radio" name="q1"  value="Greenland"  /> Greenland</input>&nbsp&nbsp
+						<input type="radio" name="q1"  value="Big Island Hawaii"  /> Big Island Hawaii</input>&nbsp&nbsp
+						<input type="radio" name="q1"  value="Madagascar"/> Madagascar</input>
+					</p>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> What river flows into the Pacific Ocean between Oregon and Washington ? 
+					</p>
+					<p>
+						<input type="radio" name="q2"  value="Columbia River"  /> Columbia River </input>&nbsp&nbsp
+						<input type="radio" name="q2"  value="Snake River"  /> Snake River</input>&nbsp&nbsp
+						<input type="radio" name="q2"  value="Sacramento River"  /> Sacramento River</input>&nbsp&nbsp
+						<input type="radio" name="q2"  value="San Joaquin River"/>San Joaquin River</input>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> Which European country replaced the Guilder with the Euro? 
+					</p>
+					<p>
+						<input type="radio" name="q3"  value="France"  />France </input>&nbsp&nbsp
+						<input type="radio" name="q3"  value="Italy"  /> Italy</input>&nbsp&nbsp
+						<input type="radio" name="q3"  value="Netherlands"  /> Netherlands</input>&nbsp&nbsp
+						<input type="radio" name="q3"  value="Switzerland"/>Switzerland</input>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> On which Hawaiian island would you find Diamond Head ? 
+					</p>
+					<p>
+						<input type="radio" name="q4"  value="Oahu"  />Oahu </input>&nbsp&nbsp
+						<input type="radio" name="q4"  value="Molokai"  /> Molokai</input>&nbsp&nbsp
+						<input type="radio" name="q4"  value="Lanai"  /> Lanai</input>&nbsp&nbsp
+						<input type="radio" name="q4"  value="Kauai"/>Kauai</input>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> What island is Tokyo located on ? 
+					</p>
+					<p>
+						<input type="radio" name="q5"  value="Kyushu"  />Kyushu </input>&nbsp&nbsp
+						<input type="radio" name="q5"  value="Okinawa"  />Okinawa</input>&nbsp&nbsp
+						<input type="radio" name="q5"  value="Honshu"  /> Honshu</input>&nbsp&nbsp
+						<input type="radio" name="q5"  value="Enoshima"/>Enoshima</input>
+					</p>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p> Which is the westernmost state in the US? 
+					</p>
+					<p>
+						<input type="radio" name="q6"  value="California"  />California </input>&nbsp&nbsp
+						<input type="radio" name="q6"  value="Alaska"  />Alaska</input>&nbsp&nbsp
+						<input type="radio" name="q6"  value="Washington"  /> Washington</input>&nbsp&nbsp
+						<input type="radio" name="q6"  value="Nevada"/>Nevada</input>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p>Zagreb is the capital of which European country ? 
+					</p>
+					<p>
+						<input type="radio" name="q7"  value="Austria"  />Austria </input>&nbsp&nbsp
+						<input type="radio" name="q7"  value="Slovakia"  />Slovakia</input>&nbsp&nbsp
+						<input type="radio" name="q7"  value="Czech Republic"  /> Czech Republic</input>&nbsp&nbsp
+						<input type="radio" name="q7"  value="Croatia"/>Croatia</input>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 quiz">
+					<p>What is the capital of South Africa ? 
+					</p>
+					<p>
+						<input type="radio" name="q8"  value="Cape Town"  />Cape Town </input>&nbsp&nbsp
+						<input type="radio" name="q8"  value="Pretoria"  />Pretoria</input>&nbsp&nbsp
+						<input type="radio" name="q8"  value="Johannesburg"  /> Johannesburg</input>&nbsp&nbsp
+						<input type="radio" name="q8"  value="Durban"/>Durban</input>
+					</p>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12 done">
+					<button type="button" class="btn btn-success btn-lg btn-done">Done</button>
+				</div>
+			</div>
+
+		</div>
+	
+	</div>
+
+</body>
+</html>
